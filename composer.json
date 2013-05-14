@@ -1,0 +1,21 @@
+{
+    "name": "guiyomh/google-authenticator",
+    "type": "symfony-bundle",
+    "description": "Symfony GoogleAuthenticatorBundle",
+    "keywords": ["Authentification", "Login", "Security"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Guillaume Camus",
+            "email": "guillaume.camus@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "sonata-project/google-authenticator": "1.*"
+    },
+    "autoload": {
+        "psr-0": { "Guiyomh\\Bundle\\GoogleAuthenticatorBundle": "" }
+    },
+    "target-dir": "Guiyomh/Bundle/GoogleAuthenticatorBundle"
+}

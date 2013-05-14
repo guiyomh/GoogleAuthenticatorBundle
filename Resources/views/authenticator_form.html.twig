@@ -1,0 +1,39 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="connection">
+
+                    <form method="POST">
+                        {% if state == 'error' %}
+                            <div class="alert alert-error">{{ 'label_two_step_code_error'|trans() }}</div>
+                        {% endif %}
+
+                        <div class="control-group">
+                            <label for="code">{{ 'label_two_step_code'|trans() }}</label>
+
+                            <div class="controls">
+                                <input type="text" id="username" name="_code" class="big" autocomplete='off'/>
+                                <span class="help-block">{{ 'message_two_step_code_help'|trans() }}</span>
+                            </div>
+
+                            <img src="{{url}}" alt="QR Code google authentification" />
+
+                        </div>
+
+                        <div class="form-actions">
+                            <input type="submit" class="btn primary" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans() }}" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+</html>
