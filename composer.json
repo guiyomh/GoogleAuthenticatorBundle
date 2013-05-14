@@ -1,5 +1,5 @@
 {
-    "name": "guiyomh/google-authenticator",
+    "name": "guiyomh/google-authenticator-bundle",
     "type": "symfony-bundle",
     "description": "Symfony GoogleAuthenticatorBundle",
     "keywords": ["Authentification", "Login", "Security"],
