@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Templating\EngineInterface;
 use Guiyomh\Bundle\GoogleAuthenticatorBundle\Listener\Helper;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Description of GoogleAuthenticatorListener
@@ -32,7 +33,7 @@ class GoogleAuthenticatorListener implements EventSubscriberInterface
      * @var Symfony\Component\Templating\EngineInterface
      */
     private $templating;
-    
+
     /**
      *
      * @var string
@@ -111,9 +112,9 @@ class GoogleAuthenticatorListener implements EventSubscriberInterface
         $user = $this->securityContext->getToken()->getUser();
         $url = $this->helper->getUrl($user);
 
-//        if (!$session->has($key)) {
-//            return;
-//        }
+        if (!$session->has($key)) {
+            return;
+        }
 
         if ($session->get($key) === true) {
             return;
@@ -124,6 +125,8 @@ class GoogleAuthenticatorListener implements EventSubscriberInterface
             $result = $this->helper->checkCode($user, $request->get('_code'));
             if ($result == true) {
                 $session->set($key, true);
+                $currentUrl = $request->getUri();
+                $event->setResponse(new RedirectResponse($currentUrl, 302));
                 return;
             }
             $state = 'error';
